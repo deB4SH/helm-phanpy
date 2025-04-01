@@ -1,0 +1,24 @@
+deployment:
+  image:
+    location: ghcr.io/deb4sh/docker-phanpy
+    tag: "2fd8af5"
+  resources: {}
+    # limits:
+    #   cpu: 100m
+    #   memory: 100Mi
+    # requests:
+    #   cpu: 10m
+    #   memory: 50Mi
+
+service:
+  loadbalancerIp:
+    #isMetalLb: false
+    #isCilium: false
+    ip: 127.0.0.1
+
+ingresses:
+  - enabled: false
+    hostname: phanpy.local.lan
+    ingressClassName: nginx
+    annotations: {}
+      # cert-manager.io/cluster-issuer: selfsigned-issuer

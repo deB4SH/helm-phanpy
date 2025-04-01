@@ -1,0 +1,22 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: phanpy-lb
+  annotations:
+    {{- if .Values.service.loadbalancerIp.isMetalLb}}
+    metallb.universe.tf/loadBalancerIPs: {{.Values.service.loadbalancerIp.ip}}
+    metallb.universe.tf/allow-shared-ip: phanpy
+    {{- end}}
+    {{- if .Values.service.loadbalancerIp.isCilium}}
+    io.cilium/lb-ipam-ips: {{.Values.service.loadbalancerIp.ip}}
+    io.cilium/lb-ipam-sharing-key: phanpy
+    {{- end}}
+spec:
+  type: LoadBalancer
+  selector:
+    app: phanpy
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080
+      targetPort: 8080

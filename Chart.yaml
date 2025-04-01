@@ -1,0 +1,7 @@
+apiVersion: v2
+name: phanpy
+description: Phanpy - A minimalistic opinionated Mastodon web client.
+version: 0.0.1
+icon: https://github.com/cheeaun/phanpy/blob/main/design/logo-4.png
+maintainers:
+  - name: deB4SH

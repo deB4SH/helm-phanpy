@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phanpy
+  labels:
+    app: phanpy
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  progressDeadlineSeconds: 600
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: phanpy
+  template:
+    metadata:
+      labels:
+        app: phanpy
+    spec:
+      containers:
+        - name: phanpy
+          image: {{ .Values.deployment.image.location }}:{{ .Values.deployment.image.tag }}
+          imagePullPolicy: IfNotPresent
+          resources:
+            {{- toYaml .Values.deployment.resources | nindent 12 }}
+          ports:
+            - containerPort: 8080
+              name: http
