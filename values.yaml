@@ -1,7 +1,7 @@
 deployment:
   image:
     location: ghcr.io/deb4sh/docker-phanpy
-    tag: "2fd8af5"
+    tag: "d8e0292"
   resources: {}
     # limits:
     #   cpu: 100m
