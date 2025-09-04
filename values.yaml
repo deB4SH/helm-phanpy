@@ -11,7 +11,8 @@ deployment:
     #   memory: 50Mi
 
 service:
-  loadbalancerIp:
+  loadbalancer:
+    enabled: false
     #isMetalLb: false
     #isCilium: false
     ip: 127.0.0.1
